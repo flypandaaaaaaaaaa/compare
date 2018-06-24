@@ -1,0 +1,35 @@
+{% extends 'bootstrap/base.html'%}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title%} Flasky {% endblock %}
+{% block navbar%}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle"
+                    data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/cmpfile">对比文件</a> </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/cmptext">对比文字</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block content%}
+<div class="container">
+    <div class="page-header">
+        <h1>请上传对比内容</h1>
+        {% if set_fform =='True' %}
+            {{ wtf.quick_form(fform) }}
+        {% else %}
+            {{ wtf.quick_form(tform) }}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
