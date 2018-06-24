@@ -11,7 +11,7 @@ Configuration:
 
 The default port in this app is 10012(Flask default port is 5000),you can modify to anyone you want.
 
-The default Listen on IP is 0.0.0.0 which means it works for all the interfaces on the host.You can modify to a certain IP if you want.
+The default listen on IP is 0.0.0.0 which means it works for all the interfaces on the host.You can modify to a certain IP if you want.
 
 Here
 --- compare.py
@@ -28,8 +28,8 @@ to a complex string that make nobody can guess.
 
 WebPage:
 
-compare 2 files: 127.0.0.1:10012/cmpfile
-compare 2 texts: 127.0.0.1:10012/cmptext
+compare 2 files: 127.0.0.1:10012/cmpfile  .
+compare 2 texts: 127.0.0.1:10012/cmptext  .
 
 
 
