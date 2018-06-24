@@ -1,21 +1,21 @@
 from flask import Flask,render_template,redirect,url_for
 from flask_bootstrap import Bootstrap
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from wtforms import SubmitField,FileField,TextAreaField
 from flask_wtf.file import FileAllowed,FileRequired
 from werkzeug import secure_filename
 import difflib,os
 from wtforms.validators import DataRequired
 
-class FileForm(Form):
+class FileForm(FlaskForm):
     File1=FileField('文件1',validators=[FileRequired(' '),FileAllowed(['txt'],'text only')])
     File2=FileField('文件2',validators=[FileRequired(' '),FileAllowed(['txt'],'text only')])
     submit = SubmitField('开始对比')
-class TextForm(Form):
+class TextForm(FlaskForm):
     Text1=TextAreaField('文本1',validators=[DataRequired()])
     Text2=TextAreaField('文本2',validators=[DataRequired()])
     submit = SubmitField('开始对比')
-class ChangeForm(Form):
+class ChangeForm(FlaskForm):
     submit=SubmitField('切换一下')
 
 app=Flask(__name__)
