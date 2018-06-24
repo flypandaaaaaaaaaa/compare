@@ -4,7 +4,7 @@ from flask_wtf import Form
 from wtforms import SubmitField,FileField,TextAreaField
 from flask_wtf.file import FileAllowed,FileRequired
 from werkzeug import secure_filename
-import difflib
+import difflib,os
 from wtforms.validators import DataRequired
 
 class FileForm(Form):
@@ -21,7 +21,7 @@ class ChangeForm(Form):
 app=Flask(__name__)
 bootstrap=Bootstrap(app)
 app.config['SECRET_KEY']='DADSSADSA'
-uppath='D://'
+uppath='/tmp/'
 @app.route("/cmpfile",methods=['GET','POST'])
 def findex():
     fform=FileForm()
@@ -36,7 +36,9 @@ def findex():
         with open(uppath+filename1,'r') as f1,open(uppath+filename2,'r') as f2:
             cmp=difflib.HtmlDiff()
             cmp_result=cmp.make_file(f1,f2)
-            return cmp_result.encode('utf-8')
+        os.remove(uppath+filename1)
+        os.remove(uppath+filename2)
+        return cmp_result.encode('utf-8')
     return render_template('index.html',fform=fform,tform=tform,set_fform=set_fform)
 
 @app.route("/cmptext",methods=['GET','POST'])
