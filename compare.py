@@ -15,8 +15,6 @@ class TextForm(FlaskForm):
     Text1=TextAreaField('文本1',validators=[DataRequired()])
     Text2=TextAreaField('文本2',validators=[DataRequired()])
     submit = SubmitField('开始对比')
-class ChangeForm(FlaskForm):
-    submit=SubmitField('切换一下')
 
 app=Flask(__name__)
 bootstrap=Bootstrap(app)
@@ -26,7 +24,6 @@ uppath='/tmp/'
 def findex():
     fform=FileForm()
     tform = TextForm()
-    CForm=ChangeForm()
     set_fform='True'
     if fform.validate_on_submit():
         filename1=secure_filename(fform.File1.data.filename)
@@ -45,7 +42,6 @@ def findex():
 def tindex():
     fform = FileForm()
     tform=TextForm()
-    CForm=ChangeForm()
     set_fform='False'
     if tform.validate_on_submit():
         text1=tform.Text1.data.splitlines()
